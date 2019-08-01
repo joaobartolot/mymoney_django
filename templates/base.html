@@ -13,9 +13,11 @@
 		<meta charset='utf-8'>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+		<!-- Bootstrap CDN -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+		<!-- jQuery CDN -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
         <!--
@@ -31,9 +33,9 @@
 	</head>
 	<body>
 		<header>
-			<nav class='navbar fixed-top navbar-expand-md navbar-dark bg-info' role='navigation' id='navMenu'>
+			<nav class='navbar navbar-expand-md navbar-dark bg-info' role='navigation' id='navMenu'>
 				<div class='container'>
-					<a class='navbar-brand' href='#'>
+					<a class='navbar-brand ml-3' href='#'>
                         My Money
 					</a>
 
@@ -43,29 +45,48 @@
 
 					<div class='collapse navbar-collapse' id='navbarToggled'>
 						<ul class='navbar-nav ml-auto'>
+							{% if user.is_authenticated %}
+								<li class='nav-item'>
+									<a class='nav-link' href='#'>Charts</a>
+								</li>
+								<li class='nav-item'>
+									<a class='nav-link' href='#'>Accounts</a>
+								</li>
+								<li class='nav-item'>
+									<a class='nav-link' href='#'>Profile</a>
+								</li>
+
+							{% else %}
+								<li class="nav-item">
+									<a href="#" class="nav-link">Login</a>
+								</li>
+								<li class="nav-item">
+									<a href="#" class="nav-link">Sign Up</a>
+								</li>
+							{% endif %}
+
+							<!-- Phone Navbar
+
+							<li class='nav-item'>
+								<a class='nav-link' href='#'><i class="fa fa-bar-chart fa-lg" aria-hidden="true"></i></a>
+							</li>
+							<li class='nav-item'>
+								<a class='nav-link' href='#'><i class="fa fa-credit-card fa-lg" aria-hidden="true"></i></a>
+							</li>
 							<li class='nav-item'>
 								<a class='nav-link' href='#'><i class="fa fa-user fa-lg" aria-hidden="true"></i></a>
 							</li>
-							<li class='nav-item'>
-								<a class='nav-link' href='#'>SERVIÇOS</a>
-							</li>
-							<li class='nav-item'>
-								<a class='nav-link' href='#'>PORTIFÓLIO</a>
-							</li>
-							<li class='nav-item'>
-								<a class='nav-link' href='#'>CONTATO</a>
-							</li>
-							<li class='nav-item'>
-								<a class='nav-link' href='#'>CONTATO</a>
-							</li>
+							-->
 						</ul>
 					</div>
 			</nav>
 		</header>
 
 		<main role='main'>
+			<div class='container'>
 				{% block content %}
 				{% endblock content %}
+			</div>
 		</main>
 
   	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
