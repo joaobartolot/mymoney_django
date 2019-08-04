@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+<form method="post">
+  <fieldset class="form-group mt-2">
+    {% csrf_token %}
+    <legend class="border-bottom">Register</legend>
+    {{ form | crispy }}
+  </fieldset>
+
+  <div class="form-group">
+    <button class="btn btn-success" type="submit">Register</button>
+  </div>
+</form>
+
+<div class="mt-2 border-top">
+  <small class="text-muted">Don't have an account?</small>
+  <small class="text-muted"><a href="#">Join Us</a></small>
+</div>
+{% endblock content %}
