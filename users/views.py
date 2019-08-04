@@ -10,4 +10,4 @@ class UserCreateView(CreateView):
     form_class = ProfileCreationForm
     success_url = '/login/'
 
-    template_name = 'users/user_form.html'
+    template_name = 'users/register.html'
