@@ -1,0 +1,10 @@
+html body {
+  font-family: "Nunito", sans-serif;
+}
+.nav-color {
+  background: #0a506f;
+}
+
+.navbar-brand {
+  font-weight: 600;
+}

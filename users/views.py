@@ -11,3 +11,9 @@ class UserCreateView(CreateView):
     success_url = '/login/'
 
     template_name = 'users/register.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Reigster'
+        return context
+    
