@@ -1,5 +1,29 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<h4 class="mt-3">Home Page</h4>
+    <!-- Main js for glider -->
+
+    <h4 class="mt-3">Home Page</h4>
+
+    <div class="glide">
+        <div class="glide__track">
+            <ul class="glide__slides">
+
+                {% for account in accounts %}
+                    <li class="glide__slide">{{ account.pk }}</li>
+                {% endfor %}
+                    <li class="glide__slide">2</li>
+                    <li class="glide__slide">3</li>
+
+            </ul>
+        </div>
+
+        <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+        </div>
+    </div>
+
+    <script src="{% static 'js/main_glide.js' %}"></script>
 {% endblock content %}

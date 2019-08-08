@@ -10,8 +10,11 @@ class Account(models.Model):
     """
     Account entity:
         Accounts attributes:
+            - card name
             - account type (current, salary, savings, food voucher, meal voucher)
+            - bank name
             - balace
+
         Accounts relationships:
             - User
     """
@@ -25,9 +28,23 @@ class Account(models.Model):
         ('W', 'Wallet'),
   )
 
+    BANKS_NAME = (
+        ('SA', 'Santander'),
+        ('CX', 'Caixa'),
+        ('BA', 'Bradesco'),
+        ('NU', 'Nu Bank'),
+        ('MV', 'Meal Valcher'),
+        ('FV', 'Food Valcher'),
+    )
+
     user = models.ForeignKey(User, on_delete = models.CASCADE)
+    account_name = models.CharField(max_length = 100)
     account_type = models.CharField(choices = ACCOUNT_TYPES, max_length=10)
+    bank_name = models.CharField(choices = BANKS_NAME, max_length=10, null=True, blank=True)
     balance = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.account_name} ({self.bank_name}): {self.balance}'
 
 # TODO (Product):
 #   - Product types should be a model to
