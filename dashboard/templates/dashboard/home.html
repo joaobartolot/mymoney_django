@@ -2,28 +2,39 @@
 {% load static %}
 
 {% block content %}
-    <!-- Main js for glider -->
 
     <h4 class="mt-3">Home Page</h4>
 
-    <div class="glide">
-        <div class="glide__track">
+    <div class='row d-flex align-items-center'>
+        <div class="col-1">
+            <button class='btn' id="leftArrow"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        </div>
+        <div class="glide mt-3 col-10">
+        <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
-
                 {% for account in accounts %}
-                    <li class="glide__slide">{{ account.pk }}</li>
+                    <li class="glide__slide">
+                        {% if account.bank_name == 'SA' %}
+                                <img src="{% static 'images/cards/santanderCard.png' %}" width='300' height='150' id='card-img'>
+                        {% elif account.bank_name == 'NU' %}
+                                <img src="{% static 'images/cards/nuCard.png' %}" width='300' height='150' id='card-img'>
+                        {% elif account.bank_name == 'MV' %}
+                                <img src="{% static 'images/cards/ticketCard.png' %}" width='300' height='150' id='card-img'>
+                        {% endif %}
+                    </li>
                 {% endfor %}
-                    <li class="glide__slide">2</li>
-                    <li class="glide__slide">3</li>
-
             </ul>
         </div>
-
-        <div class="glide__arrows" data-glide-el="controls">
-            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+        </div>
+        <div class="col-1">
+            <button class='btn shaddow-none' id="rightArrow"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
         </div>
     </div>
 
+    <div class="bullets">
+        <svg><circle /></svg>
+    </div>
+
+    <!-- Main js for glider -->
     <script src="{% static 'js/main_glide.js' %}"></script>
 {% endblock content %}

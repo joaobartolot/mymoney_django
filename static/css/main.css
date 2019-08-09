@@ -8,3 +8,17 @@ html body {
 .navbar-brand {
   font-weight: 600;
 }
+
+@media (max-width: 1199px){
+  #card-img {
+    width: 300px;
+    height: 150px;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 767px) {
+  #card-img {
+    width: 200px;
+    height: 100px;
+  }
+}

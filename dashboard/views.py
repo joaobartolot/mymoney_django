@@ -24,6 +24,7 @@ class AccountCreateView(CreateView):
         'bank_name',
         'balance'
     ]
+    success_url = '/'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
