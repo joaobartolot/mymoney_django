@@ -69,6 +69,16 @@
             </div>
         </div>
         <div class='col-md-9 d-flex justify-content-start justify-content-md-center mt-md-0 mt-3'>
+            <div class="list-group w-100">
+                {% for product in products %}
+                {% if product.account.pk == account.pk %}
+                <div class="list-group-item">
+                    <h5 class='info-label ml-md-4'>Product Name:</h5>
+                    <h7 class='ml-md-5 ml-sm-4'>{{ product.name }}</h7>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
         </div>
 </section>
 {% endfor %}
