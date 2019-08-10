@@ -1,3 +1,4 @@
+// Begin of the glider part
 var myGlide = new Glide('.glide', {
     focusAt: 'center',
     startAt: 0,
@@ -71,3 +72,27 @@ document.getElementById('leftArrow').addEventListener('click', function () {
 
 
 myGlide.mount()
+
+// End of the glide part
+
+// Info toggle
+
+var toggleBtn = document.getElementById('toggler')
+var collapseDiv = document.getElementById('infoCollapse')
+var infoCaret = document.getElementById('caretIcon')
+
+toggleBtn.addEventListener('click', function () {
+    collapseDiv.classList.toggle('show')
+    if (infoCaret.classList[infoCaret.classList.length - 1] === 'down') {
+        infoCaret.classList.remove('down')
+        infoCaret.classList.add('up')
+    }
+    else if (infoCaret.classList[infoCaret.classList.length - 1] === 'up') {
+        infoCaret.classList.remove('up')
+        infoCaret.classList.add('down')
+
+    }
+    else {
+        infoCaret.classList.add('up')
+    }
+})

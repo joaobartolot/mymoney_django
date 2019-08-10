@@ -11,6 +11,7 @@ def home(request):
     context = {
         'title': 'Home',
         'accounts': Account.objects.filter(user = request.user),
+        'products': Product.objects.filter(user = request.user),
     }
 
     return render(request, 'dashboard/home.html', context)

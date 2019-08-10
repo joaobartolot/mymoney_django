@@ -17,14 +17,20 @@
                 {% for account in accounts %}
                 <li class="glide__slide">
                     {% if account.bank_name == 'SA' %}
-                    <img src="{% static 'images/cards/santanderCard.png' %}" width='90%' height='10%' id='card-img'
-                        alt='santanderCard' data-pk='{{ account.pk }}'>
+                    <a href="#">
+                        <img src="{% static 'images/cards/santanderCard.png' %}" width='90%' height='10%' id='card-img'
+                            alt='santanderCard' data-pk='{{ account.pk }}'>
+                    </a>
                     {% elif account.bank_name == 'NU' %}
-                    <img src="{% static 'images/cards/nuCard.png' %}" width='90%' height='10%' id='card-img'
-                        alt='nuCard' data-pk='{{ account.pk }}'>
+                    <a href="#">
+                        <img src="{% static 'images/cards/nuCard.png' %}" width='90%' height='10%' id='card-img'
+                            alt='nuCard' data-pk='{{ account.pk }}'>
+                    </a>
                     {% elif account.bank_name == 'MV' %}
-                    <img src="{% static 'images/cards/ticketCard.png' %}" width='90%' height='10%' id='card-img'
-                        alt='ticketCard' data-pk='{{ account.pk }}'>
+                    <a href="#">
+                        <img src="{% static 'images/cards/ticketCard.png' %}" width='90%' height='10%' id='card-img'
+                            alt='ticketCard' data-pk='{{ account.pk }}'>
+                    </a>
                     {% endif %}
                 </li>
                 {% endfor %}
@@ -43,22 +49,26 @@
 <section class="content account_info mt-3" data-pk='{{ account.pk }}' style='display: none'>
     <div class='row d-md-flex justify-content-md-start d-flex justify-content-center'>
         <div class='col-md-3 w-50 p-2'>
-            <h4 class='border-bottom mb-3'>Account info</h4>
+            <h4 class='border-bottom mb-3 d-flex justify-content-between align-items-center'>
+                Account info
+                <button class="btn btn-outline-light" id='toggler'>
+                    <i class="fa fa-caret-down text-dark" id='caretIcon' aria-hidden="true"></i>
+                </button>
+            </h4>
             <div class="mb-3">
                 <h5 class='info-label'>Balance</h5>
                 <h6 class="ml-5">
-                    <span class='sign'>R$</span> {{ account.balance|slice:"-2" }},{{ account.balance|slice:"-2:" }}
+                    R$ {{ account.balance|slice:"-2" }},{{ account.balance|slice:"-2:" }}
                 </h6>
             </div>
-            <div class="mb-3">
-                <h5 class='info-label'>Account name:</h5>
+            <div class="mb-3d div-collapse-sm" id='infoCollapse'>
+                <h5 class='info-label'>Account name</h5>
                 <h6 class='ml-5'>
                     {{ account.name }}
                 </h6>
             </div>
-
-            <div class='col-md-9 d-flex justify-content-start justify-content-md-center mt-md-0 mt-lg-0 mt-xl-0 mt-3'>
-            </div>
+        </div>
+        <div class='col-md-9 d-flex justify-content-start justify-content-md-center mt-md-0 mt-3'>
         </div>
 </section>
 {% endfor %}

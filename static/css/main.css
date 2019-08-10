@@ -31,6 +31,62 @@ div #leftArrow {
 .sign {
   color: #A1A1A1;
 }
+
+#toggler {
+  display: block;
+  background: none;
+  border: none;
+}
+
+#infoCollapse {
+  overflow: hidden;
+  opacity: 0;
+  height: 0;
+}
+@keyframes caretUp{
+    0%{
+        transform: rotate(0) translatey(0);
+        }
+    100%{
+        transform: rotate(180deg) translatey(0);
+        }
+}
+
+@keyframes caretDown{
+    0%{
+        transform: rotate(180deg) translatey(0);
+        }
+    100%{
+        transform: rotate(0) translatey(0);
+        }
+}
+
+#caretIcon.down {
+    animation: caretDown 0.3s forwards 0s ease-in;
+}
+
+#caretIcon.up {
+    animation: caretUp 0.3s forwards 0s ease-in;
+}
+
+#infoCollapse.show {
+  opacity: 1;
+  height: auto;
+}
+
+@media (min-width: 769px){
+  #toggler {
+    display: none;
+  }
+
+  #infoCollapse {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    height: auto;
+  }
+}
+
 @media (max-width: 1199px){
   #card-img {
     width: 300px;
