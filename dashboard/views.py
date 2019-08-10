@@ -19,7 +19,7 @@ def home(request):
 class AccountCreateView(CreateView):
     model = Account
     fields = [
-        'account_name',
+        'name',
         'account_type',
         'bank_name',
         'balance'
@@ -28,5 +28,27 @@ class AccountCreateView(CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+
+        return super().form_valid(form)
+
+class ProductCreateView(CreateView):
+    model = Product
+    success_url = '/'
+    fields = [
+        'name',
+        'account',
+        'product_type',
+        'price',
+    ]
+
+    def form_valid(self, form):
+        account_pk = form.cleaned_data.get('account').pk
+
+        balance = Account.objects.filter(user = self.request.user, pk = account_pk).values('balance')[0]['balance']
+
+        new_balance = int(balance) - int(form.cleaned_data.get('price'))
+
+        form.instance.user = self.request.user
+        Account.objects.filter(user = self.request.user, pk = account_pk).update(balance=new_balance)
 
         return super().form_valid(form)

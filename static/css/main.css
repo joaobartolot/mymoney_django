@@ -1,4 +1,6 @@
 html body {
+  margin: 0;
+  height: 100%;
   font-family: "Nunito", sans-serif;
 }
 .nav-color {
@@ -9,6 +11,26 @@ html body {
   font-weight: 600;
 }
 
+#card-img {
+  margin-bottom: 3px;
+  box-shadow: 1px 2px 3px #949494;
+  border-radius: 7px;
+}
+
+div #rightArrow {
+  background: transparent;
+}
+div #leftArrow {
+  background: transparent;
+}
+
+.info-label {
+  color: #A1A1A1;
+}
+
+.sign {
+  color: #A1A1A1;
+}
 @media (max-width: 1199px){
   #card-img {
     width: 300px;
@@ -22,3 +44,35 @@ html body {
     height: 100px;
   }
 }
+
+@media (max-width: 767px) {
+  #card-img{
+    margin-left: 10%;
+  }
+  div #rightArrow {
+    display: none;
+  }
+  div #leftArrow {
+    display: none;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 460px){
+  #card-img{
+    margin-left: 10%;
+    width: 70%;
+    height: 10%;
+  }
+  div #rightArrow {
+    display: none;
+  }
+  div #leftArrow {
+    display: none;
+  }
+}
+
+
+/* 
+-webkit-clip-path: polygon(20% 7%, 29% 2%, 37% 0, 100% 0, 100% 100%, 0 100%, 0 50%, 2% 34%, 7% 21%, 14% 13%);
+clip-path: polygon(20% 7%, 29% 2%, 37% 0, 100% 0, 100% 100%, 0 100%, 0 50%, 2% 34%, 7% 21%, 14% 13%);
+ */

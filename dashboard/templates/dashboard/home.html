@@ -3,38 +3,66 @@
 
 {% block content %}
 
-    <h4 class="mt-3">Home Page</h4>
+<h5 class="mt-3">Home Page</h5>
 
-    <div class='row d-flex align-items-center'>
-        <div class="col-1">
-            <button class='btn' id="leftArrow"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
-        </div>
-        <div class="glide mt-3 col-10">
+<div class='row d-flex align-items-center'>
+    <div class="col-1">
+        <button class='btn' id="leftArrow">
+            <img src="{% static 'images/icons/left-arrow.png' %}" width="16px" height="30px">
+        </button>
+    </div>
+    <div class="glide mt-3 col-10">
         <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
                 {% for account in accounts %}
-                    <li class="glide__slide">
-                        {% if account.bank_name == 'SA' %}
-                                <img src="{% static 'images/cards/santanderCard.png' %}" width='300' height='150' id='card-img'>
-                        {% elif account.bank_name == 'NU' %}
-                                <img src="{% static 'images/cards/nuCard.png' %}" width='300' height='150' id='card-img'>
-                        {% elif account.bank_name == 'MV' %}
-                                <img src="{% static 'images/cards/ticketCard.png' %}" width='300' height='150' id='card-img'>
-                        {% endif %}
-                    </li>
+                <li class="glide__slide">
+                    {% if account.bank_name == 'SA' %}
+                    <img src="{% static 'images/cards/santanderCard.png' %}" width='90%' height='10%' id='card-img'
+                        alt='santanderCard' data-pk='{{ account.pk }}'>
+                    {% elif account.bank_name == 'NU' %}
+                    <img src="{% static 'images/cards/nuCard.png' %}" width='90%' height='10%' id='card-img'
+                        alt='nuCard' data-pk='{{ account.pk }}'>
+                    {% elif account.bank_name == 'MV' %}
+                    <img src="{% static 'images/cards/ticketCard.png' %}" width='90%' height='10%' id='card-img'
+                        alt='ticketCard' data-pk='{{ account.pk }}'>
+                    {% endif %}
+                </li>
                 {% endfor %}
             </ul>
         </div>
-        </div>
-        <div class="col-1">
-            <button class='btn shaddow-none' id="rightArrow"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
-        </div>
     </div>
-
-    <div class="bullets">
-        <svg><circle /></svg>
+    <div class="col-1">
+        <button class='btn' id="rightArrow">
+            <img src="{% static 'images/icons/right-arrow.png' %}" width="16px" height="30px">
+        </button>
     </div>
+</div>
 
-    <!-- Main js for glider -->
-    <script src="{% static 'js/main_glide.js' %}"></script>
+
+{% for account in accounts %}
+<section class="content account_info mt-3" data-pk='{{ account.pk }}' style='display: none'>
+    <div class='row d-md-flex justify-content-md-start d-flex justify-content-center'>
+        <div class='col-md-3 w-50 p-2'>
+            <h4 class='border-bottom mb-3'>Account info</h4>
+            <div class="mb-3">
+                <h5 class='info-label'>Balance</h5>
+                <h6 class="ml-5">
+                    <span class='sign'>R$</span> {{ account.balance|slice:"-2" }},{{ account.balance|slice:"-2:" }}
+                </h6>
+            </div>
+            <div class="mb-3">
+                <h5 class='info-label'>Account name:</h5>
+                <h6 class='ml-5'>
+                    {{ account.name }}
+                </h6>
+            </div>
+
+            <div class='col-md-9 d-flex justify-content-start justify-content-md-center mt-md-0 mt-lg-0 mt-xl-0 mt-3'>
+            </div>
+        </div>
+</section>
+{% endfor %}
+
+<!-- Main js for glider -->
+<script src="{% static 'js/main_glide.js' %}"></script>
 {% endblock content %}
