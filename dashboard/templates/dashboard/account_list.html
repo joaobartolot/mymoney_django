@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h3 class='border-bottom d-flex justify-content-between align-items-center'>
+    Accounts
+    <a class="btn btn-outline-light text-dark plus" href='{% url 'new-account' %}'>
+        +
+    </a>
+</h3>
+
+<div class='mt-4 cardRow'>
+    {% for account in accounts %}
+    <div class='cardContent'>
+        <div class="d-flex justify-content-center">
+            {% if account.bank_name == 'SA' %}
+            <img src="{% static 'images/cards/santanderCard.png' %}" width="250px" height="125px">
+            {% elif account.bank_name == 'NU' %}
+            <img src="{% static 'images/cards/nuCard.png' %}" width="250px" height="125px">
+            {% elif account.bank_name == 'MV' %}
+            <img src="{% static 'images/cards/ticketCard.png' %}" width="250px" height="125px">
+            {% endif %}
+        </div>
+
+        <div class="cardHeader">
+            <h5>{{ account.name }}</h5>
+        </div>
+        <div class="cardBody">
+            <h5 class="info-label cardBodyTitle">Balance</h5>
+            <div class="cardBalance">
+                R$ {{ account.balance|slice:"-2" }},{{ account.balance|slice:"-2:" }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

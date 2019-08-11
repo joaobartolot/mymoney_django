@@ -96,3 +96,4 @@ toggleBtn.addEventListener('click', function () {
         infoCaret.classList.add('up')
     }
 })
+// End of the info toggle

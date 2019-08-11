@@ -24,7 +24,8 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.3.0/css/glide.core.min.css" integrity="sha256-Ev8y2mML/gGa4LFVZgNpMTjKwj34q4pC4DcseWeRb9w=" crossorigin="anonymous" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.3.0/css/glide.theme.min.css" integrity="sha256-sw/JiPOV1ZfcXjqBJT1vqaA4vBGeiqn+b7PDhVv4OA4=" crossorigin="anonymous"/>
 
-
+		<!-- Cleave.js CDN -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.5.3/cleave.min.js" integrity="sha256-yx/X2dD86fWz9OyQ/ZnQH8BQaS5Ta4OuNJICU17rySE=" crossorigin="anonymous"></script>
 
 
 		<!-- Fonts -->
@@ -60,7 +61,7 @@
 									<a class='nav-link' href='#'>Charts</a>
 								</li>
 								<li class='nav-item'>
-									<a class='nav-link' href='#'>Accounts</a>
+									<a class='nav-link' href='{% url 'accounts' %}'>Accounts</a>
 								</li>
 								<li class='nav-item'>
 									<a class='nav-link' href='#'>Profile</a>
@@ -97,7 +98,7 @@
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.3.0/glide.min.js" integrity="sha256-ujmfLA8r9ntmbatq60vOH954kngGJ5sMYn1LMq54Oto=" crossorigin="anonymous"></script>
 		<main role='main'>
-			<div class='container'>
+			<div class='container mt-3'>
 				{% block content %}
 				{% endblock content %}
 			</div>

@@ -4,7 +4,7 @@
 {% block content %}
 <form method='POST'> {% csrf_token %}
     <fieldset class="form-group mt-3">
-        <legend class="border-bottom">New Account</legend>
+        <legend class="border-bottom">New Product</legend>
         {{ form|crispy }}
 
         <div class="mt-2">
@@ -12,4 +12,5 @@
         </div>
     </fieldset>
 </form>
+<script src="{% static 'js/main_forms.js' %}"></script>
 {% endblock content %}

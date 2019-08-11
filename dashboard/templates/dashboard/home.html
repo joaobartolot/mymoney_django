@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load util %}
 
 {% block content %}
 
@@ -18,17 +19,17 @@
                 <li class="glide__slide">
                     {% if account.bank_name == 'SA' %}
                     <a href="#">
-                        <img src="{% static 'images/cards/santanderCard.png' %}" width='90%' height='10%' id='card-img'
+                        <img src="{% static 'images/cards/santanderCard.png' %}" width='275' height='150' id='card-img'
                             alt='santanderCard' data-pk='{{ account.pk }}'>
                     </a>
                     {% elif account.bank_name == 'NU' %}
                     <a href="#">
-                        <img src="{% static 'images/cards/nuCard.png' %}" width='90%' height='10%' id='card-img'
+                        <img src="{% static 'images/cards/nuCard.png' %}" width='275' height='150' id='card-img'
                             alt='nuCard' data-pk='{{ account.pk }}'>
                     </a>
                     {% elif account.bank_name == 'MV' %}
                     <a href="#">
-                        <img src="{% static 'images/cards/ticketCard.png' %}" width='90%' height='10%' id='card-img'
+                        <img src="{% static 'images/cards/ticketCard.png' %}" width='275' height='150' id='card-img'
                             alt='ticketCard' data-pk='{{ account.pk }}'>
                     </a>
                     {% endif %}
@@ -58,7 +59,8 @@
             <div class="mb-3">
                 <h5 class='info-label'>Balance</h5>
                 <h6 class="ml-5">
-                    R$ {{ account.balance|slice:"-2" }},{{ account.balance|slice:"-2:" }}
+                    R$
+                    {{ account.balance|get_type == 'str'|slice:"-2" }},{{ account.balance|get_type == 'str'|slice:"-2:" }}
                 </h6>
             </div>
             <div class="mb-3d div-collapse-sm" id='infoCollapse'>
@@ -83,6 +85,6 @@
 </section>
 {% endfor %}
 
-<!-- Main js for glider -->
-<script src="{% static 'js/main_glide.js' %}"></script>
+<!-- Main js for home -->
+<script src="{% static 'js/main_home.js' %}"></script>
 {% endblock content %}

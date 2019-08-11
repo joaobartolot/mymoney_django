@@ -127,8 +127,38 @@ div #leftArrow {
   }
 }
 
+a.plus {
+  font-weight: 600;
+  font-size: 100%;
+  padding-bottom: 0;
+  padding-top: 0;
+  border: none;
+}
 
-/* 
--webkit-clip-path: polygon(20% 7%, 29% 2%, 37% 0, 100% 0, 100% 100%, 0 100%, 0 50%, 2% 34%, 7% 21%, 14% 13%);
-clip-path: polygon(20% 7%, 29% 2%, 37% 0, 100% 0, 100% 100%, 0 100%, 0 50%, 2% 34%, 7% 21%, 14% 13%);
- */
+.CardRow {
+  display: grid;
+  grid-column-gap: 50px;
+}
+
+.cardContent {
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 10px;
+  padding: 15px 50px 15px 50px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding-top: 10px;
+}
+
+.cardBody {
+  margin-top: 15px;
+  margin-left: 5px;
+}
+
+.cardBody .cardBalance {
+  margin-left: 20px;
+}

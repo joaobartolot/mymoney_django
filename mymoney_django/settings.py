@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'livereload',
     'django.contrib.staticfiles',
 
+    # Template filters:
+    'dashboard.templatetags.util',
+
     # My apps:
     'dashboard.apps.DashboardConfig',
     'users.apps.UsersConfig',
