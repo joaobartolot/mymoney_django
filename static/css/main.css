@@ -142,10 +142,14 @@ a.plus {
 }
 
 .cardBody {
-  margin-top: 15px;
-  margin-left: 5px;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: start;
+  margin-top: 5%;
+  margin-left: 3%;
 }
 
 .cardBody .cardBalance {
-  margin-left: 20px;
+  margin-left: 7%;
 }

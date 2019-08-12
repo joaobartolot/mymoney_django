@@ -12,26 +12,28 @@
 
 <div class="row">
     {% for account in accounts %}
-    <div class='cardContainer col-md-4 col-sm-6 border-0'>
-        <div class="cardImg">
-            {% if account.bank_name == 'SA' %}
-            <img src="{% static 'images/cards/santanderCard.png' %}" width="100%" class='image'>
-            {% elif account.bank_name == 'NU' %}
-            <img src="{% static 'images/cards/nuCard.png' %}" width="100%" class='image'>
-            {% elif account.bank_name == 'MV' %}
-            <img src="{% static 'images/cards/ticketCard.png' %}" width="100%" class='image'>
-            {% endif %}
-        </div>
-
-        <div class="cardHeader">
-            <h5>{{ account.name }}</h5>
-        </div>
-        <div class="cardBody">
-            <h5 class="info-label cardBodyTitle">Balance</h5>
-            <div class="cardBalance">
-                R$ {{ account.balance|slice:"-2" }},{{ account.balance|slice:"-2:" }}
+    <div class='col-sm-6 col-md-4 mt-xs-2 mt-sm-2'>
+        <a class='card btn btn-default cardContainer' href='#'>
+            <div class="cardImg">
+                {% if account.bank_name == 'SA' %}
+                <img src="{% static 'images/cards/santanderCard.png' %}" width="60%" class='image'>
+                {% elif account.bank_name == 'NU' %}
+                <img src="{% static 'images/cards/nuCard.png' %}" width="60%" class='image'>
+                {% elif account.bank_name == 'MV' %}
+                <img src="{% static 'images/cards/ticketCard.png' %}" width="60%" class='image'>
+                {% endif %}
             </div>
-        </div>
+
+            <div class="cardHeader">
+                <h5>{{ account.name }}</h5>
+            </div>
+            <div class="cardBody">
+                <h5 class="info-label cardBodyTitle">Balance</h5>
+                <div class="cardBalance">
+                    R$ {{ account.balance|slice:"-2" }},{{ account.balance|slice:"-2:" }}
+                </div>
+            </div>
+        </a>
     </div>
     {% endfor %}
 </div>
