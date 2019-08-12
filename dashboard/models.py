@@ -42,10 +42,11 @@ class Account(models.Model):
     name = models.CharField(max_length = 100)
     account_type = models.CharField(choices = ACCOUNT_TYPES, max_length=10)
     bank_name = models.CharField(choices = BANKS_NAME, max_length=10, null=True, blank=True)
+    initial_balance = models.CharField(max_length = 100000000000)
     balance = models.CharField(max_length = 100000000000)
 
     def __str__(self):
-        return f'{self.name} ({self.bank_name}): {self.balance}'
+        return f'{self.name}: R$ {self.balance[:-2]},{self.balance[-2:]}'
 
 # TODO (Product):
 #   - Product types should be a model to

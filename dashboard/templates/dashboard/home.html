@@ -19,18 +19,18 @@
                 <li class="glide__slide">
                     {% if account.bank_name == 'SA' %}
                     <a href="#">
-                        <img src="{% static 'images/cards/santanderCard.png' %}" width='275' height='150' id='card-img'
+                        <img src="{% static 'images/cards/santanderCard.png' %}" width='90%' id='card-img'
                             alt='santanderCard' data-pk='{{ account.pk }}'>
                     </a>
                     {% elif account.bank_name == 'NU' %}
                     <a href="#">
-                        <img src="{% static 'images/cards/nuCard.png' %}" width='275' height='150' id='card-img'
-                            alt='nuCard' data-pk='{{ account.pk }}'>
+                        <img src="{% static 'images/cards/nuCard.png' %}" width='90%' id='card-img' alt='nuCard'
+                            data-pk='{{ account.pk }}'>
                     </a>
                     {% elif account.bank_name == 'MV' %}
                     <a href="#">
-                        <img src="{% static 'images/cards/ticketCard.png' %}" width='275' height='150' id='card-img'
-                            alt='ticketCard' data-pk='{{ account.pk }}'>
+                        <img src="{% static 'images/cards/ticketCard.png' %}" width='90%' id='card-img' alt='ticketCard'
+                            data-pk='{{ account.pk }}'>
                     </a>
                     {% endif %}
                 </li>
@@ -47,10 +47,10 @@
 
 
 {% for account in accounts %}
-<section class="content account_info mt-3" data-pk='{{ account.pk }}' style='display: none'>
+<section class="content account_info mt-3" data-pk='{{ account.pk }}'>
     <div class='row d-md-flex justify-content-md-start d-flex justify-content-center'>
         <div class='col-md-3 w-50 p-2'>
-            <h4 class='border-bottom mb-3 d-flex justify-content-between align-items-center'>
+            <h4 class='border-bottom mb-3 d-flex justify-content-between align-items-center' id='toggler'>
                 Account info
                 <button class="btn btn-outline-light" id='toggler'>
                     <i class="fa fa-caret-down text-dark" id='caretIcon' aria-hidden="true"></i>
@@ -63,7 +63,7 @@
                     {{ account.balance|to_str|slice:":-2" }},{{ account.balance|to_str|slice:"-2:" }}
                 </h6>
             </div>
-            <div class="mb-3d div-collapse-sm" id='infoCollapse'>
+            <div class="mb-3 div-collapse-sm" id='infoCollapse'>
                 <h5 class='info-label'>Account name</h5>
                 <h6 class='ml-5'>
                     {{ account.name }}
@@ -71,12 +71,21 @@
             </div>
         </div>
         <div class='col-md-9 d-flex justify-content-start justify-content-md-center mt-md-0 mt-3'>
-            <div class="list-group w-100">
+            <div class="list-group border-top-0 border-right-0 border-left-0 w-100">
                 {% for product in products %}
                 {% if product.account.pk == account.pk %}
                 <div class="list-group-item">
-                    <h5 class='info-label ml-md-4'>Product Name:</h5>
-                    <h7 class='ml-md-5 ml-sm-4'>{{ product.name }}</h7>
+                    <div class="border-bottom">
+                        <h5 class='info-label ml-md-4'>Product Name:</h5>
+                        <h7 class='ml-md-5 ml-sm-4'>{{ product.name }}</h7>
+                    </div>
+                    <div class='mt-2'>
+                        <h5 class='info-label ml-md-4'>Price:</h5>
+                        <h7 class='ml-md-5 ml-sm-4'>
+                            R$
+                            {{ product.price|to_str|slice:":-2" }},{{ product.price|to_str|slice:"-2:" }}
+                        </h7>
+                    </div>
                 </div>
                 {% endif %}
                 {% endfor %}

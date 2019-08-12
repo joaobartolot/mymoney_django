@@ -39,13 +39,14 @@ class AccountCreateView(CleanFieldMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        balance = form.cleaned_data.get('balance')
+        balance = form.cleaned_data.get('initial_balance')
 
+        form.instance.initial_balance = self.money_field('balance', form)
         form.instance.balance = self.money_field('balance', form)
 
         return super().form_valid(form)
 
-class ProductCreateView(CreateView):
+class ProductCreateView(CleanFieldMixin, CreateView):
     model = Product
     success_url = '/'
     fields = [ 'name', 'account', 'product_type', 'price' ]
@@ -54,11 +55,12 @@ class ProductCreateView(CreateView):
         account_pk = form.cleaned_data.get('account').pk
 
         balance = Account.objects.filter(user = self.request.user, pk = account_pk).values('balance')[0]['balance']
-        price = form.cleaned_data.get('price')
+        price = self.money_field('price', form)
 
         new_balance = int(balance) - int(price)
 
         form.instance.user = self.request.user
+        form.instance.price = self.money_field('price', form)
         Account.objects.filter(user = self.request.user, pk = account_pk).update(balance=new_balance)
 
         return super().form_valid(form)

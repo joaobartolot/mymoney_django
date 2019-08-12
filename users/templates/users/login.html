@@ -1,7 +1,9 @@
-{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
 <form method="post">
-  <fieldset class="form-group mt-2">
-    {% csrf_token %}
+  <fieldset class="form-group mt-2">{% csrf_token %}
     <legend class="border-bottom">Login</legend>
     {{ form | crispy }}
   </fieldset>

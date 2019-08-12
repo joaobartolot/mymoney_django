@@ -5,20 +5,10 @@ var myGlide = new Glide('.glide', {
     perView: 3,
     rewind: false,
     breakpoints: {
-        1024: {
-            focusAt: 'center',
-            perView: 2
-        },
-        800: {
-            focusAt: 'center',
+        1200: {
             perView: 2
         },
         700: {
-            focusAt: 'center',
-            perView: 1
-        },
-        600: {
-            focusAt: 'center',
             perView: 1
         }
     }
