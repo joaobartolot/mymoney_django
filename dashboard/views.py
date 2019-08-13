@@ -6,18 +6,37 @@ from .models import Account, Product
 
 # Custom mixins:
 
-class CleanFieldMixin(object):
+class CustomMixin(object):
     # Method to remove the 'R$', ',' and the '.' in the currency fields
-    def money_field (self, field, form):
+    def money_field(self, field, form):
         value = form.cleaned_data.get(field)
-        prefix_removed = value[3:]
+        value = value.split(' ')[1]
+        value = ''.join(value.split('.'))
 
-        cleaned_flied = ''
-        for letter in prefix_removed:
-            if letter != '.' and letter != ',':
-                cleaned_flied += letter
+        split_value = value.split(',')
+
+        if split_value[1].len() == 1:
+            ''.join([split_value[0], split_value[1] + '0'])
+        elif split_value[1].len() == 0:
+            ''.join([split_value[0], '00'])
+
+        # cleaned_flied = ''
+        # for letter in prefix_removed:
+        #     if letter != '.' and letter != ',':
+        #         cleaned_flied += letter
 
         return cleaned_flied
+
+    def field_sum(self, query, field):
+        values = query.values(field)
+        total = 0
+
+        for value in values:
+            total += value[field]
+
+        total = str(total)
+
+        return f'R$ {total[-2:]},{total[-2]}'
 
 # Create your views here.
 
@@ -32,7 +51,7 @@ def home(request):
     return render(request, 'dashboard/home.html', context)
 
 
-class AccountCreateView(CleanFieldMixin, CreateView):
+class AccountCreateView(CustomMixin, CreateView):
     model = Account
     success_url = '/'
     fields = [ 'name', 'account_type', 'bank_name', 'balance' ]
@@ -46,7 +65,7 @@ class AccountCreateView(CleanFieldMixin, CreateView):
 
         return super().form_valid(form)
 
-class ProductCreateView(CleanFieldMixin, CreateView):
+class ProductCreateView(CustomMixin, CreateView):
     model = Product
     success_url = '/'
     fields = [ 'name', 'account', 'product_type', 'price' ]
@@ -69,3 +88,15 @@ class AccountListView(ListView):
     model = Account
     context_object_name = 'accounts'
     paginate_by = 20
+
+class ProductListView(CustomMixin, ListView):
+    model = Product
+    context_object_name = 'products'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['total'] = self.field_sum(Products.objects.filter(self.request.user), 'price')
+
+        return context
+    
