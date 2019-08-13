@@ -10,33 +10,39 @@ class CustomMixin(object):
     # Method to remove the 'R$', ',' and the '.' in the currency fields
     def money_field(self, field, form):
         value = form.cleaned_data.get(field)
-        value = value.split(' ')[1]
-        value = ''.join(value.split('.'))
 
-        split_value = value.split(',')
+        if len(value.split(' ')) == 1:
+            cleaned_field = '000'
 
-        if split_value[1].len() == 1:
-            ''.join([split_value[0], split_value[1] + '0'])
-        elif split_value[1].len() == 0:
-            ''.join([split_value[0], '00'])
+        else:
+            value = value.split(' ')[1]
+            value = ''.join(value.split('.'))
 
-        # cleaned_flied = ''
-        # for letter in prefix_removed:
-        #     if letter != '.' and letter != ',':
-        #         cleaned_flied += letter
+            split_value = value.split(',')
 
-        return cleaned_flied
+            if len(split_value) == 1:
+                cleaned_field = ''.join([split_value[0], '00'])
+            else:
+                if len(split_value[1]) == 1:
+                    cleaned_field = ''.join([split_value[0], split_value[1] + '0'])
+                else:
+                    cleaned_field = ''.join(split_value)
+
+        return cleaned_field
 
     def field_sum(self, query, field):
         values = query.values(field)
-        total = 0
+        if len(values) != 0:
+            total = 0
+            for value in values:
+                total += value[field]
 
-        for value in values:
-            total += value[field]
+            total = str(total)
 
-        total = str(total)
+            return f'R$ {total[-2:]},{total[-2]}'
+        else:
+            return f'R$ 0,00'
 
-        return f'R$ {total[-2:]},{total[-2]}'
 
 # Create your views here.
 
@@ -96,7 +102,7 @@ class ProductListView(CustomMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['total'] = self.field_sum(Products.objects.filter(self.request.user), 'price')
+        context['total'] = self.field_sum(Product.objects.filter(user = self.request.user), 'price')
 
         return context
     

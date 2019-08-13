@@ -8,4 +8,5 @@ urlpatterns = [
     path('new_account', login_required(views.AccountCreateView.as_view()), name='new-account'),
     path('accounts', login_required(views.AccountListView.as_view()), name='accounts'),
     path('new_product', login_required(views.ProductCreateView.as_view()), name='new-product'),
+    path('products', login_required(views.ProductListView.as_view()), name='products'),
 ]
