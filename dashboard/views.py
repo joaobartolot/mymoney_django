@@ -35,11 +35,11 @@ class CustomMixin(object):
         if len(values) != 0:
             total = 0
             for value in values:
-                total += value[field]
+                total += int(value[field])
 
             total = str(total)
 
-            return f'R$ {total[-2:]},{total[-2]}'
+            return f'R$ {total[:-2]},{total[-2:]}'
         else:
             return f'R$ 0,00'
 

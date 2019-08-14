@@ -10,10 +10,50 @@
     </a>
 </h3>
 
-<div class="col-md-3">
-    {{ total }}
+<div class='row justify-content-between mt-4'>
+	<div class='col-md-8 product-list-group'>
+	{% for product in products %}
+		<div class='product-list-item'>
+			<div>
+				<h5 class='info-label'>Name</h5>
+				<h6 class='ml-5'>
+					{{ product.name }}
+				</h6>
+			</div>
+
+			<div class='product-list-item-center'>
+				<h5 class='info-label'>Price</h5>
+				<h6 class='ml-5'>
+					R$ {{ product.price|slice:':-2' }},{{ product.price|slice:'-2:' }}
+				</h6>
+			</div>
+
+			<div>
+				<h5 class='info-label'>Account</h5>
+				<h6 class='ml-5'>
+					{{ product.account.account_type }}
+				</h6>
+			</div>
+		</div>
+	{% endfor %}
+	</div>
+
+	<div class="col-md-3 info-container">
+		<div class='info-header'>
+			<h4>
+					Info
+			</h4>
+		</div>
+		<div class='info-body'>
+			<div class='info-element'>
+				<h5 class='info-label'>Total Spent</h5>
+				<h6 class='info-component'>
+					{{ total }}
+				</h6>
+			</div>
+		</div>
+	</div>
+
 </div>
-{% for product in products %}
-{% endfor %}
 
 {% endblock content %}
