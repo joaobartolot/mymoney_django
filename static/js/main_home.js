@@ -24,11 +24,13 @@ myGlide.on('move.after', function () {
 
 
 
+
     var accountInfo = document.getElementsByClassName('account_info')
+
     for (var item of accountInfo) {
         var sectionPk = item.getAttribute('data-pk')
 
-        if (sectionPk === currentImg.getAttribute('data-pk')) {
+        if (sectionPk == currentImg.getAttribute('data-pk')) {
             item.style.display = 'block'
         } else {
             item.style.display = 'none'
