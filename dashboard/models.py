@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 
 # TODO (Account):
 #   - Account types should be a model
-#   - Add a initial money field
 
 class Account(models.Model):
     """
@@ -48,23 +47,46 @@ class Account(models.Model):
     def __str__(self):
         return f'{self.name}: R$ {self.balance[:-2]},{self.balance[-2:]}'
 
-# TODO (Product):
-#   - Product types should be a model to
+    @property
+    def account_expenses(self):
+        return Expense.objects.filter(account = self.pk)
 
-class Product(models.Model):
+    @property
+    def total_expenses(self):
+        '''
+            Expenses per account
+        '''
+        product_filter = Expense.objects.filter(account = self.pk)
+
+        total = 0
+
+        for product in product_filter:
+            total += int(product.price)
+
+        total = str(total)
+
+        if total == '0':
+            total = '000'
+
+        return f'R$ - {total[:-2]},{total[-2:]}'
+
+# TODO (Expense):
+#   - Expense types should be a model
+
+class Expense(models.Model):
     """
-    Product entity:
-        Product attributes:
+    Expense entity:
+        Expense attributes:
             - type (food, tech, ...)
             - name
             - price
 
-        Products relationships:
+        Expense relationships:
             - User (foreign key)
             - Account (foreign key)
     """
 
-    PRODUCT_TYPES = ( 
+    EXPENSE_TYPES = ( 
         ('F', 'Food'),
         ('S', 'Snack'),
         ('B', 'Bill'),
@@ -75,5 +97,5 @@ class Product(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
 
     name = models.CharField(max_length=100)
-    product_type = models.CharField(choices = PRODUCT_TYPES, max_length=10)
+    expense_type = models.CharField(choices = EXPENSE_TYPES, max_length=10)
     price = models.CharField(max_length = 100000000000)

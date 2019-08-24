@@ -13,8 +13,16 @@
 <div class="row">
     {% for account in accounts %}
     <div class='col-sm-6 col-md-4 mt-xs-2 mt-sm-2'>
-        <a class='card btn btn-default cardContainer' href='#'>
-            <div class="cardImg">
+        <div class='card cardContainer' href='#'>
+						<div class='icon-container'>
+							<a class='icon-link'>
+								<img src='{% static 'icons/edit.svg' %}' width='16px' height='16px'>
+							</a>
+							<a class='icon-link' href="{% url 'account-delete' account.pk %}">
+								<img src='{% static 'icons/delete.svg' %}' width='16px' height='16px'>
+							</a>
+						</div>
+						<a class="cardImg" href="{% url 'account-detail' account.pk %}">
                 {% if account.bank_name == 'SA' %}
                 <img src="{% static 'images/cards/santanderCard.png' %}" width="60%" class='image'>
                 {% elif account.bank_name == 'NU' %}
@@ -22,7 +30,7 @@
                 {% elif account.bank_name == 'MV' %}
                 <img src="{% static 'images/cards/ticketCard.png' %}" width="60%" class='image'>
                 {% endif %}
-            </div>
+            </a>
 
             <div class="cardHeader">
                 <h5>{{ account.name }}</h5>
@@ -33,7 +41,7 @@
                     R$ {{ account.balance|slice:"-2" }},{{ account.balance|slice:"-2:" }}
                 </div>
             </div>
-        </a>
+        </div>
     </div>
     {% endfor %}
 </div>

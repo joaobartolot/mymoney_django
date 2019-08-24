@@ -244,6 +244,7 @@ a.plus {
 .cardContainer .cardImg {
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .cardHeader {
@@ -265,4 +266,92 @@ a.plus {
 
 .cardBody .cardBalance {
   margin-left: 7%;
+}
+
+.none-expense {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.none-expense img {
+	margin: 5%;
+}
+
+.icon-container {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 0.75rem;
+	padding-bottom: 0.15rem;
+	border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.icon-link {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.icon-link:first-child {
+	margin-left: 3px;
+}
+
+.icon-link:last-child {
+	margin-right: 3px;
+}
+
+.delete-header {
+ border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.delete-info-container {
+ display: flex;
+ justify-content: space-around;
+ border: 1px solid rgb(221, 221, 221);
+ border-radius: 10px;
+ padding: 10px;
+ margin-top: 5%;
+}
+
+.delete-info-container div {
+	width: auto;
+	height: auto;
+}
+
+.delete-info-container .info-label {
+  font-weight: 600;
+}
+
+.delete-btn-container {
+	margin-top: 5%;
+}
+
+.delete-btn-container button {
+	margin-left: 1%;
+	font-weight: 600;
+	border: 1px solid #a52019;
+	border-radius: 5px;
+	padding: 4px 10px;
+	background: none;
+	color: #a52019;
+}
+
+.delete-btn-container button:hover {
+	background: #a52019;
+	color: white;
+}
+
+.delete-btn-container a {
+	text-decoration: none;
+	font-weight: 600;
+	border: 1px solid #595959;
+	border-radius: 5px;
+	padding: 5px 3px;
+	cursor: pointer;
+	color: #595959;
+}
+
+.delete-btn-container a:hover {
+	color: white;
+	background: #595959;
 }

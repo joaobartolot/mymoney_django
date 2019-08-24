@@ -38,21 +38,6 @@ myGlide.on('move.after', function () {
 
     }
 
-
-
-    // if (currentImg.alt === 'nuCard') {
-    //     document.getElementById('card-names').innerHTML = 'Nu Bank Card Selected'
-    // }
-    // if (currentImg.alt === 'ticketCard') {
-    //     document.getElementById('card-names').innerHTML = 'Ticket Card Selected'
-    // }
-    // if (currentImg.alt === 'santanderCard') {
-    //     document.getElementById('card-names').innerHTML = 'Santander Card Selected'
-    // }
-
-    // console.log();
-
-
 })
 
 document.getElementById('rightArrow').addEventListener('click', function () {
@@ -66,26 +51,3 @@ document.getElementById('leftArrow').addEventListener('click', function () {
 myGlide.mount()
 
 // End of the glide part
-
-// Info toggle
-
-var toggleBtn = document.getElementById('toggler')
-var collapseDiv = document.getElementById('infoCollapse')
-var infoCaret = document.getElementById('caretIcon')
-
-toggleBtn.addEventListener('click', function () {
-    collapseDiv.classList.toggle('show')
-    if (infoCaret.classList[infoCaret.classList.length - 1] === 'down') {
-        infoCaret.classList.remove('down')
-        infoCaret.classList.add('up')
-    }
-    else if (infoCaret.classList[infoCaret.classList.length - 1] === 'up') {
-        infoCaret.classList.remove('up')
-        infoCaret.classList.add('down')
-
-    }
-    else {
-        infoCaret.classList.add('up')
-    }
-})
-// End of the info toggle
