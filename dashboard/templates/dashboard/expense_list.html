@@ -11,6 +11,7 @@
 </h3>
 
 <div class='row justify-content-center justify-content-md-between mt-4'>
+    {% if expenses %}
     <div class='col-md-8 product-list-group'>
         {% for expense in expenses %}
         <div class='product-list-item'>
@@ -30,14 +31,26 @@
 
             <div class='item-info'>
                 <h5 class='info-label'>Account</h5>
-                <h6>
-                    {{ expense.account.account_type }}
-                </h6>
+                {% if expense.account.account_type == 'W' %}
+                <img src='{% static 'icons/cards/money.png' %}' width='34px' height='34px'>
+                {% endif %}
+                {% if expense.account.bank_name == 'SA' %}
+                <img src='{% static 'icons/cards/santander.png' %}' width='34px' height='34px'>
+                {% elif expense.account.bank_name == 'NU' %}
+                <img src='{% static 'icons/cards/nubank.png' %}' width='34px' height='34px'>
+                {% elif expense.account.bank_name == 'MV' %}
+                <img src='{% static 'icons/cards/ticket.png' %}' width='34px' height='34px'>
+                {% endif %}
             </div>
         </div>
         {% endfor %}
     </div>
-
+    {% else %}
+    <div class='col-md-8 none-expense'>
+        <img src='{% static 'icons/info-circle.svg' %}' width='34px' height='34px'>
+        <h4>You Don't have any expenses yet!</h4>
+    </div>
+    {% endif %}
     <div class="col-md-3 info-container">
         <div class='info-header'>
             <h4>

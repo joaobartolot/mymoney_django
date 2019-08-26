@@ -125,6 +125,14 @@ class ExpenseListView(CustomMixin, ListView):
 class AccountDetailView(DetailView):
     model = Account
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["expenses"] = Expense.objects.filter(user = self.request.user, account = self.kwargs['pk'])
+
+        return context
+    
+
 '''
     End of detail views
 '''

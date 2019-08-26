@@ -10,19 +10,23 @@
     </a>
 </h3>
 
-<div class="row">
+<div class="row mt-md-4">
+    {% if accounts %}
     {% for account in accounts %}
-    <div class='col-sm-6 col-md-4 mt-xs-2 mt-sm-2'>
+    <div class='col-sm-6 col-md-4 mt-3 mt-md-2'>
         <div class='card cardContainer' href='#'>
-						<div class='icon-container'>
-							<a class='icon-link'>
-								<img src='{% static 'icons/edit.svg' %}' width='16px' height='16px'>
-							</a>
-							<a class='icon-link' href="{% url 'account-delete' account.pk %}">
-								<img src='{% static 'icons/delete.svg' %}' width='16px' height='16px'>
-							</a>
-						</div>
-						<a class="cardImg" href="{% url 'account-detail' account.pk %}">
+            <div class='icon-container'>
+                <a class='icon-link'>
+                    <img src='{% static 'icons/edit.svg' %}' width='16px' height='16px'>
+                </a>
+                <a class='icon-link' href="{% url 'account-delete' account.pk %}">
+                    <img src='{% static 'icons/delete.svg' %}' width='16px' height='16px'>
+                </a>
+            </div>
+            <a class="cardImg" href="{% url 'account-detail' account.pk %}">
+                {% if account.account_type == 'W' %}
+                <img src="{% static 'images/cards/money.png' %}" width="60%" class='image'>
+                {% endif %}
                 {% if account.bank_name == 'SA' %}
                 <img src="{% static 'images/cards/santanderCard.png' %}" width="60%" class='image'>
                 {% elif account.bank_name == 'NU' %}
@@ -44,6 +48,12 @@
         </div>
     </div>
     {% endfor %}
+    {% else %}
+    <div class='col none-expense'>
+        <img src='{% static 'icons/info-circle.svg' %}' width='34px' height='34px'>
+        <h4>You Don't have any account yet!</h4>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock content %}

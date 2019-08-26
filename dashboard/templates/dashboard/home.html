@@ -18,18 +18,24 @@
             <ul class="glide__slides">
                 {% for account in accounts %}
                 <li class="glide__slide">
+                    {% if account.account_type == 'W' %}
+                    <a href="{% url 'account-detail' account.pk %}">
+                        <img src="{% static 'images/cards/money.png' %}" width='90%' id='card-img' alt='money'
+                            data-pk='{{ account.pk }}' style="border-radius: 0">
+                    </a>
+                    {% endif %}
                     {% if account.bank_name == 'SA' %}
-										<a href="{% url 'account-detail' account.pk %}">
+                    <a href="{% url 'account-detail' account.pk %}">
                         <img src="{% static 'images/cards/santanderCard.png' %}" width='90%' id='card-img'
                             alt='santanderCard' data-pk='{{ account.pk }}'>
                     </a>
                     {% elif account.bank_name == 'NU' %}
-										<a href="{% url 'account-detail' account.pk %}">
+                    <a href="{% url 'account-detail' account.pk %}">
                         <img src="{% static 'images/cards/nuCard.png' %}" width='90%' id='card-img' alt='nuCard'
                             data-pk='{{ account.pk }}'>
                     </a>
                     {% elif account.bank_name == 'MV' %}
-										<a href="{% url 'account-detail' account.pk %}">
+                    <a href="{% url 'account-detail' account.pk %}">
                         <img src="{% static 'images/cards/ticketCard.png' %}" width='90%' id='card-img' alt='ticketCard'
                             data-pk='{{ account.pk }}'>
                     </a>
@@ -53,39 +59,32 @@
 
 <div class="account_info mt-4" data-pk='{{ account.pk }}'>
     <div class='row justify-content-center justify-content-md-between'>
-				{% if account.account_expenses %}
-					<div class='col-md-8 product-list-group'>
-								{% for expense in account.account_expenses %}
-								<div class='product-list-item'>
-										<div class='item-info'>
-												<h5 class='info-label'>Name</h5>
-												<h6>
-														{{ expense.name }}
-												</h6>
-										</div>
+        {% if account.account_expenses %}
+        <div class='col-md-8 product-list-group'>
+            {% for expense in account.account_expenses %}
+            <div class='product-list-item'>
+                <div class='item-info' style="width: 50%">
+                    <h5 class='info-label'>Name</h5>
+                    <h6>
+                        {{ expense.name }}
+                    </h6>
+                </div>
 
-										<div class='item-info'>
-												<h5 class='info-label'>Price</h5>
-												<h6>
-														R$ {{ expense.price|slice:':-2' }},{{ expense.price|slice:'-2:' }}
-												</h6>
-										</div>
-
-										<div class='item-info'>
-												<h5 class='info-label'>Account</h5>
-												<h6>
-														{{ expense.account.account_type }}
-												</h6>
-										</div>
-								</div>
-								{% endfor %}
-					</div>
-				{% else %}
-					<div class='col-md-8 none-expense'>
-						<img src='{% static 'icons/info-circle.svg' %}' width='34px' height='34px'>
-						<h4>You Don't have any expense in this account!</h4>
-					</div>
-				{% endif %}
+                <div class='item-info' style="border-right: 0; width: 50%">
+                    <h5 class='info-label'>Price</h5>
+                    <h6>
+                        R$ {{ expense.price|slice:':-2' }},{{ expense.price|slice:'-2:' }}
+                    </h6>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class='col-md-8 none-expense'>
+            <img src='{% static 'icons/info-circle.svg' %}' width='34px' height='34px'>
+            <h4>You Don't have any expense in this account!</h4>
+        </div>
+        {% endif %}
 
         <div class="col-md-3 info-container">
             <div class='info-header'>

@@ -26,7 +26,7 @@ class Account(models.Model):
         ('FV', 'Food Voucher'),
         ('MV', 'Meal Voucher'),
         ('W', 'Wallet'),
-  )
+    )
 
     BANKS_NAME = (
         ('SA', 'Santander'),
