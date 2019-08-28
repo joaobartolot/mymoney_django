@@ -60,9 +60,9 @@
 <div class="account_info mt-4" data-pk='{{ account.pk }}'>
     <div class='row justify-content-center justify-content-md-between'>
         {% if account.account_expenses %}
-        <div class='col-md-8 product-list-group'>
+        <div class='col-md-8 expense-list-group'>
             {% for expense in account.account_expenses %}
-            <div class='product-list-item'>
+            <div class='expense-list-item'>
                 <div class='item-info' style="width: 50%">
                     <h5 class='info-label'>Name</h5>
                     <h6>

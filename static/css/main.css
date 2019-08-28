@@ -36,6 +36,15 @@ section {
   display: none;
 }
 
+.header {
+	width: 100%;
+	padding: 0;
+	padding-left: 10px;
+	margin: 0;
+	margin-bottom: 2rem;
+	border-bottom: 1px solid #d9d9d9;
+}
+
 .nav-color {
   background: #0a506f;
 }
@@ -117,7 +126,17 @@ div #leftArrow {
   width: 30%;
 }
 
-.product-list-group {
+.item-info.no-border-right {
+	border-right: 0;
+	width: 50%;
+}
+
+.expense-list {
+	display: flex;
+	justify-content: space-around;
+}
+
+.expense-list-group {
 	display: flex;
 	flex-flow: column;
 	justify-content: space-between;
@@ -127,11 +146,11 @@ div #leftArrow {
   height: 100%;
 }
 
-.col-md-8.product-list-group {
+.col-md-8.expense-list-group {
   width: 95%;
 }
 
-.product-list-item {
+.expense-list-item {
 	display: flex;
 	justify-content: space-around;
 	padding-bottom: 3px;
@@ -140,7 +159,7 @@ div #leftArrow {
 	padding-bottom: 10px;
 }
 
-.product-list-item:last-child {
+.expense-list-item:last-child {
   border-bottom: 0;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -239,6 +258,7 @@ a.plus {
   border: 1px solid rgb(221, 221, 221);
   border-radius: 10px;
   padding: 3%;
+	padding-top: 0;
 }
 
 .cardContainer .cardImg {
@@ -326,7 +346,7 @@ a.plus {
 	margin-top: 5%;
 }
 
-.delete-btn-container button {
+.delete-buttom {
 	margin-left: 1%;
 	font-weight: 600;
 	border: 1px solid #a52019;
@@ -336,12 +356,24 @@ a.plus {
 	color: #a52019;
 }
 
-.delete-btn-container button:hover {
+a.delete-buttom {
+	text-decoration: none;
+}
+
+.account-buttom-container a.delete-buttom {
+	margin: 0;
+}
+
+.delete-buttom:hover {
 	background: #a52019;
 	color: white;
 }
 
-.delete-btn-container a {
+a.delete-buttom:hover {
+	text-decoration: none;
+}
+
+.cancel-buttom {
 	text-decoration: none;
 	font-weight: 600;
 	border: 1px solid #595959;
@@ -351,7 +383,42 @@ a.plus {
 	color: #595959;
 }
 
-.delete-btn-container a:hover {
+.cancel-buttom:hover {
+	text-decoration: none;
 	color: white;
 	background: #595959;
+}
+
+.update-buttom {
+	text-decoration: none;
+	margin-left: 1%;
+	font-weight: 600;
+	border: 1px solid #3968C5;
+	border-radius: 5px;
+	padding: 4px 10px;
+	background: none;
+	color: #3968C5;
+}
+
+.update-buttom:hover {
+	text-decoration: none;
+	background: #3968C5;
+	color: white;
+}
+
+.account-buttom-container {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+
+.list-and-info {
+	display: flex;
+	justify-content: center;
+}
+
+@media (min-width: 800px) {
+	.list-and-info {
+		justify-content: space-between;
+	}
 }

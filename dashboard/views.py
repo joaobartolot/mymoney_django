@@ -103,9 +103,15 @@ class AccountListView(ListView):
     context_object_name = 'accounts'
     paginate_by = 20
 
+    def get_queryset(self):
+        return Account.objects.filter(user = self.request.user)
+
 class ExpenseListView(CustomMixin, ListView):
     model = Expense
     context_object_name = 'expenses'
+
+    def get_queryset(self):
+        return Expense.objects.filter(user = self.request.user)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -143,6 +149,11 @@ class AccountDetailView(DetailView):
 class AccountDeleteView(DeleteView):
     model = Account
     template_name = 'dashboard/account_delete.html'
+    success_url = '/accounts/'
+
+class AccountDetailDeleteView(DeleteView):
+    model = Account
+    template_name = 'dashboard/account_detail_delete.html'
     success_url = '/accounts/'
 
 class ExpenseDeleteView(DeleteView):

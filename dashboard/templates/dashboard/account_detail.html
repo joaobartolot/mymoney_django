@@ -2,8 +2,49 @@
 
 {% block content %}
 
-<h3>Account</h3>
+<h3 class='header'>Account</h3>
 
-{{ account }}
+<div class='row account-buttom-container'>
+	<a class='update-buttom' href='#'>Update</a>
+	<a class='delete-buttom' href='{% url 'account-detail-delete' account.pk %}'>Delete</a>
+</div>
 
+<div class='row list-and-info'>
+	{% if expenses %}
+	<div class='col-md-8 expense-list-group'>
+		{% for expense in expenses %}
+
+		<div class='expense-list-item'>
+			<div class='item-info'>
+				<h4 class='info-label'>Name</h4>
+				{{ expense.name }}
+			</div>
+
+			<div class='item-info no-border-right'>
+				<h4 class='info-label'>Price</h4>
+				R$ 
+				{{ expense.price|slice:"-2" }},{{ expense.price|slice:"-2:" }}
+			</div>
+		</div>
+
+		{% endfor %}
+	</div>
+	{% endif %}
+
+    <div class="col-md-3 info-container">
+        <div class='info-header'>
+            <h4>
+                Info
+            </h4>
+        </div>
+        <div class='info-body'>
+            <div class='info-element'>
+                <h5 class='info-label'>Total Spent</h5>
+                <h6 class='info-component'>
+                    {{ account.total_expenses }}
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
