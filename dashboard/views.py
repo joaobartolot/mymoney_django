@@ -168,6 +168,15 @@ class ExpenseDeleteView(DeleteView):
 '''
     Update views
 '''
+class AccountUpdateView(CustomMixin, UpdateView):
+    model = Account
+    fields = [ 'name', 'account_type', 'bank_name', 'balance' ]
+    success_url = '/accounts/'
+
+    def form_valid(self, form):
+        form.instance.balance = self.money_field('balance', form)
+
+        return super().form_valid(form)
 
 '''
     End of update views

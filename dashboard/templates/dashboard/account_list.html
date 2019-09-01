@@ -16,7 +16,7 @@
     <div class='col-sm-6 col-md-4 mt-3 mt-md-2'>
         <div class='card cardContainer' href='#'>
             <div class='icon-container'>
-                <a class='icon-link'>
+                <a class='icon-link' href="{% url 'account-update' account.pk %}">
                     <img src='{% static 'icons/edit.svg' %}' width='16px' height='16px'>
                 </a>
                 <a class='icon-link' href="{% url 'account-delete' account.pk %}">

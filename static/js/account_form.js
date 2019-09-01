@@ -68,3 +68,30 @@ accountTypes.addEventListener('change', () => {
         bankNames.disabled = true
     }
 })
+
+console.log(balance.value.length)
+console.log(balance.value.slice(2, -2).length)
+// balance.value = 'R$ '
+// check the size of the splice until the last two digits
+// if it is greater than 3:
+// shift the "." to the left by 2
+// else:
+// delete the "."
+
+
+function adjustingDots(balance) {
+	let balanceArray = []
+
+	for (letter of balance.value.slice(3, -2)) {
+		balanceArray.push(letter)
+	}
+
+	for (let i = 0; i < balanceArray.length; i++) {
+		if (balanceArray[i] == '.') {
+			let temp = balanceArray[i]
+			balanceArray[i] = balanceArray[i-1]
+
+		}
+	}
+
+}
