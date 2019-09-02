@@ -93,3 +93,5 @@ function adjustingDots(balance) {
 
     return `R$ ${balanceArray.join('')},${balance.value.slice(-2)}`
 }
+
+balance.value = adjustingDots(balance)

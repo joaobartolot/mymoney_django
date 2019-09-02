@@ -32,7 +32,7 @@ html body {
   }
 }
 
-section {
+.account_info {
   display: none;
 }
 

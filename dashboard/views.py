@@ -170,6 +170,7 @@ class ExpenseDeleteView(DeleteView):
 '''
 class AccountUpdateView(CustomMixin, UpdateView):
     model = Account
+    template_name = 'dashboard/account_update.html'
     fields = [ 'name', 'account_type', 'bank_name', 'balance' ]
     success_url = '/accounts/'
 

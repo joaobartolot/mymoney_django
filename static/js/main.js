@@ -1,4 +1,8 @@
 window.addEventListener('load', function () {
-    const loader = this.document.querySelector('.loader')
-    loader.classList.add('hide')
+    function hideLoad() {
+        const loader = this.document.querySelector('.loader')
+        loader.classList.add('hide')
+    }
+
+    setTimeout(hideLoad, 300)
 })
