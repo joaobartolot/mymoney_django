@@ -17,10 +17,10 @@
         <div class='card cardContainer' href='#'>
             <div class='icon-container'>
                 <a class='icon-link' href="{% url 'account-update' account.pk %}">
-                    <img src='{% static 'icons/edit.svg' %}' width='16px' height='16px'>
+                    <img src='{% static 'icons/edit.svg' %}' width='18px' height='18px'>
                 </a>
                 <a class='icon-link' href="{% url 'account-delete' account.pk %}">
-                    <img src='{% static 'icons/delete.svg' %}' width='16px' height='16px'>
+                    <img src='{% static 'icons/delete.svg' %}' width='18px' height='18px'>
                 </a>
             </div>
             <a class="cardImg" href="{% url 'account-detail' account.pk %}">
@@ -31,7 +31,7 @@
                 <img src="{% static 'images/cards/santanderCard.png' %}" width="60%" class='image'>
                 {% elif account.bank_name == 'NU' %}
                 <img src="{% static 'images/cards/nuCard.png' %}" width="60%" class='image'>
-                {% elif account.bank_name == 'MV' %}
+                {% elif account.card_name == 'TR' %}
                 <img src="{% static 'images/cards/ticketCard.png' %}" width="60%" class='image'>
                 {% endif %}
             </a>

@@ -8,6 +8,10 @@ new Cleave(balance, {
 
 let accountTypes = document.getElementById('id_account_type')
 let bankNames = document.getElementById('id_bank_name')
+let cardNames = document.getElementById('id_card_name')
+
+let divBankNames = document.getElementById('div_id_bank_name')
+let divCardNames = document.getElementById('div_id_card_name')
 
 function checkType(selectedType) {
     if (selectedType === 'MV') {
@@ -91,7 +95,20 @@ function adjustingDots(balance) {
         balanceArray.shift()
     }
 
-    return `R$ ${balanceArray.join('')},${balance.value.slice(-2)}`
+	if (balanceArray.length != 0) {
+		return `R$ ${balanceArray.join('')},${balance.value.slice(-2)}`
+	} else {
+		return 'R$ 0,00'
+	}
 }
 
 balance.value = adjustingDots(balance)
+
+
+if (bankNames.value !== '') {
+	divBankNames.style.display = 'block'
+}
+
+if (cardNames.value !== '') {
+	divCardNames.style.display = 'block'
+}

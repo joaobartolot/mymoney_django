@@ -34,7 +34,7 @@
                         <img src="{% static 'images/cards/nuCard.png' %}" width='90%' id='card-img' alt='nuCard'
                             data-pk='{{ account.pk }}'>
                     </a>
-                    {% elif account.bank_name == 'MV' %}
+                    {% elif account.card_name == 'TR' %}
                     <a href="{% url 'account-detail' account.pk %}">
                         <img src="{% static 'images/cards/ticketCard.png' %}" width='90%' id='card-img' alt='ticketCard'
                             data-pk='{{ account.pk }}'>

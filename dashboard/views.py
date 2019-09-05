@@ -62,7 +62,7 @@ def home(request):
 class AccountCreateView(CustomMixin, CreateView):
     model = Account
     success_url = '/'
-    fields = [ 'name', 'account_type', 'bank_name', 'balance' ]
+    fields = [ 'name', 'account_type', 'bank_name', 'card_name', 'balance' ]
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -171,7 +171,7 @@ class ExpenseDeleteView(DeleteView):
 class AccountUpdateView(CustomMixin, UpdateView):
     model = Account
     template_name = 'dashboard/account_update.html'
-    fields = [ 'name', 'account_type', 'bank_name', 'balance' ]
+    fields = [ 'name', 'account_type', 'bank_name', 'card_name', 'balance' ]
     success_url = '/accounts/'
 
     def form_valid(self, form):

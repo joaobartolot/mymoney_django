@@ -15,9 +15,37 @@ html body {
   background: white;
 }
 
-.loader img {
-  width: 100px;
-  height: 100px;
+.loader .ball {
+  background: #0a506f;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+}
+
+.ball:nth-child(1) {
+  animation: loading 0.9s infinite 0s ease-in-out;
+}
+
+.ball:nth-child(2) {
+  margin-right: 5px;
+  margin-left: 5px;
+  animation: loading 0.9s infinite 0.2s ease-in-out;
+}
+
+.ball:nth-child(3) {
+  animation: loading 0.9s infinite 0.4s ease-in-out;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .loader.hide {
@@ -48,6 +76,7 @@ html body {
 .nav-color {
   background: #0a506f;
 }
+
 
 .navbar-brand {
   font-weight: 600;
@@ -163,6 +192,10 @@ div #leftArrow {
   border-bottom: 0;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
+}
+
+.expense-list-item:hover {
+	background: #f6f6f6
 }
 
 .sign {
@@ -346,7 +379,7 @@ a.plus {
 	margin-top: 5%;
 }
 
-.delete-buttom {
+.delete-button {
 	margin-left: 1%;
 	font-weight: 600;
 	border: 1px solid #a52019;
@@ -356,24 +389,24 @@ a.plus {
 	color: #a52019;
 }
 
-a.delete-buttom {
+a.delete-button {
 	text-decoration: none;
 }
 
-.account-buttom-container a.delete-buttom {
+.account-button-container a.delete-button {
 	margin: 0;
 }
 
-.delete-buttom:hover {
+.delete-button:hover {
 	background: #a52019;
 	color: white;
 }
 
-a.delete-buttom:hover {
+a.delete-button:hover {
 	text-decoration: none;
 }
 
-.cancel-buttom {
+.cancel-button {
 	text-decoration: none;
 	font-weight: 600;
 	border: 1px solid #595959;
@@ -383,13 +416,13 @@ a.delete-buttom:hover {
 	color: #595959;
 }
 
-.cancel-buttom:hover {
+.cancel-button:hover {
 	text-decoration: none;
 	color: white;
 	background: #595959;
 }
 
-.update-buttom {
+.update-button {
 	text-decoration: none;
 	margin-left: 1%;
 	font-weight: 600;
@@ -400,16 +433,26 @@ a.delete-buttom:hover {
 	color: #3968C5;
 }
 
-.update-buttom:hover {
+.update-button:hover {
 	text-decoration: none;
 	background: #3968C5;
 	color: white;
 }
 
-.account-buttom-container {
+.account-button-container {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 1rem;
+}
+
+.button-container {
+	display: flex;
+	align-items: center;
+}
+
+.button-container a {
+	margin-left: 10px;
+	padding: 6px 10px;
 }
 
 .list-and-info {
@@ -421,4 +464,12 @@ a.delete-buttom:hover {
 	.list-and-info {
 		justify-content: space-between;
 	}
+}
+
+#div_id_bank_name {
+	display: none;
+}
+
+#div_id_card_name {
+	display: none;
 }

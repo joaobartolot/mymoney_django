@@ -32,15 +32,27 @@ class Account(models.Model):
         ('SA', 'Santander'),
         ('CX', 'Caixa'),
         ('BA', 'Bradesco'),
+        ('BB', 'Banco do Brasil'),
+        ('IT', 'Itaú'),
+        ('OR', 'Original'),
+        ('CB', 'City Bank'),
         ('NU', 'Nu Bank'),
-        ('MV', 'Meal Valcher'),
-        ('FV', 'Food Valcher'),
+    )
+
+    CARDS_NAME = (
+        ('VR', 'Vale Refeição'),
+        ('VA', 'Vale Alimentação'),
+        ('TR', 'Ticket Refeição'),
+        ('TA', 'Ticket Alimentação'),
+        ('AR', 'Alelo Refeição'),
+        ('AA', 'Alelo Alimentação'),
     )
 
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     name = models.CharField(max_length = 100)
     account_type = models.CharField(choices = ACCOUNT_TYPES, max_length=10)
-    bank_name = models.CharField(choices = BANKS_NAME, max_length=10, null=True, blank=True)
+    bank_name = models.CharField(choices = BANKS_NAME, max_length=10, blank=True, null=True, default=None)
+    card_name = models.CharField(choices = CARDS_NAME, max_length=10, blank=True, null=True, default=None)
     initial_balance = models.CharField(max_length = 100000000000)
     balance = models.CharField(max_length = 100000000000)
 
