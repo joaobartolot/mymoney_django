@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView, ListView, DetailView, DeleteView, UpdateView
+from django.urls import reverse
 
 from .models import Account, Expense
 
@@ -178,6 +179,19 @@ class AccountUpdateView(CustomMixin, UpdateView):
         form.instance.balance = self.money_field('balance', form)
 
         return super().form_valid(form)
+
+class AccountUpdateDetailView(CustomMixin, UpdateView):
+    model = Account
+    template_name = 'dashboard/account_detail_update.html'
+    fields = [ 'name', 'account_type', 'bank_name', 'card_name', 'balance' ]
+
+    def form_valid(self, form):
+        form.instance.balance = self.money_field('balance', form)
+
+        return super().form_valid(form)
+
+    def get_success_url(self, **kwargs):
+        return reverse('account-detail', kwargs={'pk': self.object.pk})
 
 '''
     End of update views
