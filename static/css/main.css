@@ -60,6 +60,28 @@ html body {
   }
 }
 
+.dot-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	height: 20px;
+	width: 100%;
+}
+
+.dot {
+  width: 20px;
+  height: 10px;
+  background: #112047;
+  margin: 0px 10px;
+  border-radius: 15px;
+  transition: 0.2s ease-in;
+}
+
+.dot.active {
+  height: 20px;
+  background: #254499;
+}
+
 .account_info {
   display: none;
 }
@@ -472,4 +494,28 @@ a.delete-button:hover {
 
 #div_id_card_name {
 	display: none;
+}
+
+#id_name:invalid {
+	border-color: red;
+}
+
+#id_account_type:invalid {
+	border-color: red;
+}
+
+#id_balance:invalid {
+	border-color: red;
+}
+
+#id_name:focus:invalid {
+	outline: none;
+}
+
+#id_balance:focus:invalid {
+	outline: none;
+}
+
+#id_account_type:focus:invalid {
+	outline: none;
 }
