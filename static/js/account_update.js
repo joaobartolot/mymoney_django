@@ -14,47 +14,47 @@ let divBankNames = document.getElementById('div_id_bank_name')
 let divCardNames = document.getElementById('div_id_card_name')
 
 function checkType(selectedType) {
-    if (selectedType === 'MV') {
-        for (let element of bankNames.options) {
-            if (element.value !== '' && element.value !== 'MV') {
-                element.style.display = 'none'
-            } else {
 
-                element.style.display = 'block'
-            }
-        }
-    } else if (selectedType === 'FV') {
-        for (let element of bankNames.options) {
-            if (element.value !== '' && element.value !== 'FV') {
-                element.style.display = 'none'
-            } else {
+    if (selectedType === '') {
+        divCardNames.style.display = 'none'
+        divBankNames.style.display = 'none'
 
-                element.style.display = 'block'
-            }
-        }
-    } else if (selectedType === 'W') {
-        for (let element of bankNames.options) {
-            element.style.display = 'none'
-        }
-    } else if (selectedType === 'CA') {
-        for (let element of bankNames.options) {
-            if (element.value !== '' && element.value === 'MV' || element.value === 'FV' || element.value === 'NU') {
-                element.style.display = 'none'
-            } else {
-
-                element.style.display = 'block'
-            }
-        }
-    } else if (selectedType === 'SL' || selectedType === 'SA') {
-        for (let element of bankNames.options) {
-            if (element.value !== '' && element.value === 'MV' || element.value === 'FV') {
-                element.style.display = 'none'
-            } else {
-
-                element.style.display = 'block'
-            }
-        }
     }
+
+    if (selectedType === 'MV') {
+        divCardNames.style.display = 'block'
+        divBankNames.style.display = 'none'
+
+        for (element of cardNames.options) {
+            if (element.value.slice(-1) !== 'R') {
+                element.style.display = 'none'
+            } else {
+                element.style.display = 'block'
+            }
+        }
+
+    } else if (selectedType === 'FV') {
+        divCardNames.style.display = 'block'
+        divBankNames.style.display = 'none'
+
+        for (element of cardNames.options) {
+            if (element.value.slice(-1) !== 'A') {
+                element.style.display = 'none'
+            } else {
+                element.style.display = 'block'
+            }
+        }
+
+    } else if (selectedType === 'W') {
+        divCardNames.style.display = 'none'
+        divBankNames.style.display = 'none'
+
+    } else if (selectedType === 'SL' || selectedType === 'SA' || selectedType === 'CA') {
+        divCardNames.style.display = 'none'
+        divBankNames.style.display = 'block'
+
+    }
+
 }
 
 accountTypes.addEventListener('change', () => {
@@ -95,20 +95,20 @@ function adjustingDots(balance) {
         balanceArray.shift()
     }
 
-	if (balanceArray.length != 0) {
-		return `R$ ${balanceArray.join('')},${balance.value.slice(-2)}`
-	} else {
-		return 'R$ 0,00'
-	}
+    if (balanceArray.length != 0) {
+        return `R$ ${balanceArray.join('')},${balance.value.slice(-2)}`
+    } else {
+        return 'R$ 0,00'
+    }
 }
 
 balance.value = adjustingDots(balance)
 
 
 if (bankNames.value !== '') {
-	divBankNames.style.display = 'block'
+    divBankNames.style.display = 'block'
 }
 
 if (cardNames.value !== '') {
-	divCardNames.style.display = 'block'
+    divCardNames.style.display = 'block'
 }

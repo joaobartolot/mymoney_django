@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% load static %} {% load util %} {% block content %}
+
+<script src="{% static 'js/AccountListView.js' %}"></script>
+
+<div ng-app="AccountListApp" ng-controller="AccountListController">
+  <h3 class="border-bottom d-flex justify-content-between align-items-center">
+    Accounts [{count}]
+    <input
+      type="button"
+      class="btn btn-outline-light text-dark plus"
+      ng-click="addNewAccount()"
+      value="+"
+    />
+  </h3>
+
+  <div class="row mt-md-4">
+    <div class="col-sm-6 col-md-4 mt-3 mt-md-2" ng-repeat="item in list">
+      <div class="card cardContainer" href="#">
+        <div class="icon-container">
+          <img src='{% static 'icons/edit.svg' %}' width='18px' height='18px'>
+          <img src='{% static 'icons/delete.svg' %}' width='18px' height='18px'>
+        </div>
+
+        <a href="#" class="cardImg">
+          <img
+            src="/static/images/cards/[{ item.cardImage }]"
+            width="60%"
+            class="image"
+          />
+        </a>
+
+        <div class="cardHeader">
+          <h5>[{ item.name }]</h5>
+        </div>
+        <div class="cardBody">
+          <h5 class="info-label cardBodyTitle">Balance</h5>
+          <div class="cardBalance">
+            [{ item.balance }]
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class='col none-expense'>
+        <img src='{% static 'icons/info-circle.svg' %}' width='34px' height='34px'>
+        <h4>You Don't have any account yet!</h4>
+    </div> -->
+  </div>
+</div>
+
+{% endblock content %}

@@ -101,6 +101,7 @@ class ExpenseCreateView(CustomMixin, CreateView):
 '''
 class AccountListView(ListView):
     model = Account
+    template_name = 'dashboard/account_list2.html'
     context_object_name = 'accounts'
     paginate_by = 20
 
